@@ -6,15 +6,14 @@
             function init() {
                 const content = document.getElementById("content");
 
-                const queryString = window.location.search;
-                const urlParams = new URLSearchParams(queryString);
-                const redirectUrl = urlParams.get("go");
-
-                if (redirectUrl && redirectUrl.startsWith("rdp://")) {
+                const queryString = window.location.search.toString();
+                
+                if (queryString && queryString.startsWith("?rdp://")) {
+                    const redirectUrl = queryString.substring(1);
                     content.textContent = "Redirecting to " + redirectUrl;
                     window.location.href = redirectUrl;
                 } else {
-                    content.textContent = "No valid RDP URL is provided to redirect. Usage: /index.html?go=rdp://full%20address=s:exampleserver:3389)";
+                    content.textContent = "No valid RDP URL is provided to redirect. Usage example: /index.html?rdp://full%20address=s:exampleserver:3389)";
                 }
             }
         </script>
