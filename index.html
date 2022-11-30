@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Simple RDP URL Redirector</title>
+        <script>
+            window.onload = init;
+            function init() {
+                const content = document.getElementById("content");
+
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                const redirectUrl = urlParams.get("go");
+
+                if (redirectUrl && redirectUrl.startsWith("rdp://")) {
+                    content.textContent = "Redirecting to " + redirectUrl;
+                    window.location.href = redirectUrl;
+                } else {
+                    content.textContent = "No valid RDP URL is provided to redirect. Usage: /index.html?go=rdp://full%20address=s:exampleserver:3389)";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="content">No valid RDP URL is provided to redirect</div>
+    </body>
+
+</html>
