@@ -5,13 +5,15 @@
             window.onload = init;
             function init() {
                 const content = document.getElementById("content");
+                const close = document.getElementById("content");
 
                 const queryString = window.location.search.toString();
                 
                 if (queryString && queryString.startsWith("?rdp://")) {
                     const redirectUrl = queryString.substring(1);
-                    content.textContent = "Redirecting to " + redirectUrl;
+                    content.textContent = "<p>Redirected to <b>" + redirectUrl + "</b></p><p>Feel free to close this window</p>";
                     window.location.href = redirectUrl;
+                    close.click();
                 } else {
                     content.textContent = "No valid RDP URL is provided to redirect. Usage example: /index.html?rdp://full%20address=s:exampleserver:3389)";
                 }
@@ -20,6 +22,8 @@
     </head>
     <body>
         <div id="content">No valid RDP URL is provided to redirect</div>
+        <!-- saved from url=(0014)about:internet -->
+        <a id="close" href="#" onclick="javascript:window.close();opener.window.focus();" >Close Window</a>
     </body>
 
 </html>
