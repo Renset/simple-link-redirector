@@ -5,13 +5,13 @@
             window.onload = init;
             function init() {
                 const content = document.getElementById("content");
-                const close = document.getElementById("content");
+                const close = document.getElementById("close");
 
                 const queryString = window.location.search.toString();
                 
                 if (queryString && queryString.startsWith("?rdp://")) {
                     const redirectUrl = queryString.substring(1);
-                    content.textContent = "<p>Redirected to <b>" + redirectUrl + "</b></p><p>Feel free to close this window</p>";
+                    content.innerHTML = "<p>Redirected to <b>" + redirectUrl + "</b></p><p>Feel free to close this window</p>";
                     window.location.href = redirectUrl;
                     close.click();
                 } else {
