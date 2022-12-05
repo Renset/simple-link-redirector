@@ -33,7 +33,11 @@
                     }
 
                     download(fileName, fileContents);
-                    close.click();
+                    
+                    setTimeout(() => {
+                        close.click();
+                    }, 1000)
+                    
                 }
             }
 
